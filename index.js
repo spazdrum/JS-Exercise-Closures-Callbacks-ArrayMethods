@@ -90,7 +90,7 @@ function processLastItem(stringList, callback) {
 function processSum(numberlist, callback) {
   let sum = 0
   for (let i = 0; i < numberlist.length; i++){
-    sum +== numberlist[i];
+    sum += numberlist[i];
   }
   return callback(sum)
 }
