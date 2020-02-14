@@ -160,8 +160,12 @@ function processContains(item, list, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  let deDupe = []
+  list.forEach(arr => {
+    if (!deDupe.includes(arr)) deDupe.push(arr);
+  });
+  return callback(deDupe);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -234,7 +238,7 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @returns a number which is the sum of the donations by all runners.
 */
 function tallyUpDonations(runners) {
-  return runners.reduce((a,b) => a + b.donation, 0)
+  return runners.reduce((a, b) => a + b.donation, 0);
 }
 
 /////////////// CLOSURES ///////////////
@@ -255,10 +259,18 @@ function tallyUpDonations(runners) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
+  
+  let count = 0;
+  return function () {
+    return count++;
   }
+  const newCounter = counter();
+  newCounter();
+  newCounter();
+  newCounter();
+  console.log(newCounter());
+  console.log(newCounter());
+  console.log(newCounter());
   // BROKEN CODE ENDS
 }
 
@@ -282,8 +294,13 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(num) {
+  let count = 0;
+  function counter() {
+    count > num ? (count = 0) : count;
+    return count++;
+  }
+  return counter;
 }
 
 /////////////// END OF CHALLENGE ///////////////
