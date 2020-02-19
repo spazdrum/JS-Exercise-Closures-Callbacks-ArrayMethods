@@ -264,13 +264,6 @@ function counterMaker() {
   return function () {
     return count++;
   }
-  const newCounter = counter();
-  newCounter();
-  newCounter();
-  newCounter();
-  console.log(newCounter());
-  console.log(newCounter());
-  console.log(newCounter());
   // BROKEN CODE ENDS
 }
 
